@@ -1,0 +1,68 @@
+Name: Max Uhr
+Class: CSCI-261
+Title: Battlestar Galaga
+
+Poblem Description:
+
+	This is a simple shooting game modeled after the arcade game, Galaga. The user can move a ship and 
+fire bullets with some modifed forms of firing and movement. The enemies on the other side of the field will
+randomly attack by divebombing across the screen dealing one damage to the user ships if it strikes. The user
+has three lives to kill as many invaders as possible at which point the game will end and the score will be
+displayed on the output screen. In addition to simple horizontal movement and a basic gun, the user can also
+use harpoons to teleport to different locations and has a laser that kills all enemies in a line. 
+
+
+Program Documentation:
+
+	In order to run the program, the user must have access to the SFML library and must have replaced the 
+data file with the provided data file in order for the sprites to load. With the proper files, the program 
+can be run at which point a small screen will appear with the user ship and a pyramid of alien invaders
+The user can move left and right using the "A" and "D" keys and fires with the Spacebar; the spacebar can 
+be held for auto firing. The arrow keys can be used for additional movement and firing options. Upon the 
+first press of either the left or right key, a harpoon is sent out in the direction pressed; if the key is
+re-pressed while the harpoon is active, the ship will isntantly teleport to the harpoon location. The user can
+also press the up-arrow key in order to fire a laser that pierces all enemies in a line; the laser and harpoons
+are regenerated every 7 seconds and they can be stocked up beyond one. The enemy invaders will
+attack by diving in a pre-set direction at a speed and frequency that increases the more times they have been 
+killed. Each tiem an invader is killed, the player's score increases by 1 to be output once the match has ended.
+The match ends when the user has been hit three times by an invader (each hit is shown with a white flash). 
+If I were to continue building, I would add an additional time-stopping functionality using the down key as
+an additional movement option. I also would have added more movement to the invaders beyond going straight or 
+along a diagonal. 
+
+Tests:
+
+1.) The usership was tested to ensure that it could not vertically change position and it coud not run off either
+side of the screen when moving horizontally.
+
+2.) The harpoon was designed so that it would be destroyed when it got to a point where teleportation would 
+move the ship significantly off screen.
+
+3.) The laser and regular firing were tested to ensure that the enemy ships would be destroyed and that 
+neither firing method could be used while it was on cooldown (for the main gun) or out of stock (for the 
+laser).
+
+4.) The hitboxes for the main ship were tested to ensure that a life was lost when an enemy hit the ship and 
+that when three lives were lost the game ended.
+
+5.) The program was run using bugfixer to ensure that once an entity went off screen it was either deleted or
+inactivated so it would not eat up memory (as is the case with the bullets) or stop respawning (as would be the
+case with the invaders).
+
+
+Reflections:
+
+	Through designing this program, I significantly improves my ability to work with classes, and use the 
+SFML library efficiently. This was particularly noticeable when checking hitboxes since a number of && statements
+checking all the dimensions were required. Using classes allowed me to easily keep track of and store the three
+main entities that were at work in the game (user ship, invader ships, bullets). I initially encountered issues
+with setting the textures for the enemy ships because textures are not stored but pointed to. To get around this
+I created a new function that passed the texture by reference and the set it to the sprite. If I were to do this
+project again (or another one like it) I would be more thorough in my pseudo-code. For this project, I outlined
+the game simply before moving onto coding and I ended up having to go back and fix code for edge situations and
+new bullet-types/movement scenarios. This was very apparent in my use of classes. I have a number of lower
+level functions that I call multiple times throughout the code. Instead of calling these lower level functions
+I could have created higher-level functions that pertain to specific sets of actions that occur in unison
+which would have saved a significant amount of space in main(). Overall, the game does what I want it to do,
+but I would like to go back and improve the cleanliness of the code at which point adding new features will be
+straightforward and easy.
